@@ -1,3 +1,3 @@
 export const APp = () => {
-  return <>app</>
+  return <div className="">app</div>
 }
