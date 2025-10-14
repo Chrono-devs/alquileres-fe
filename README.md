@@ -1,16 +1,69 @@
-# React + Vite
+# Alquileres
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Rutas y Layouts añadidos
 
-Currently, two official plugins are available:
+Se configuró `react-router-dom` con tres layouts principales:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- `AuthLayout`: Contiene las vistas de autenticación (`/login`, `/register`). Estructura centrada y contenedor reducido.
+- `MainLayout`: Layout público para la landing y futuras secciones generales (`/`). Incluye navegación básica y footer.
+- `AdminLayout`: Panel administrativo (`/admin`) diseñado para desarrolladores / gestión de dueños y propiedades.
 
-## React Compiler
+Archivo principal de rutas: ahora `src/routes/AppRoutes.jsx` usando la sintaxis declarativa `<BrowserRouter><Routes><Route/>`.
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+Rutas actuales:
 
-## Expanding the ESLint configuration
+```text
+/                -> Landing (MainLayout)
+/login           -> Login (AuthLayout)
+/register        -> Register (AuthLayout)
+/admin           -> AdminDashboard (AdminLayout)
+* (fallback)     -> 404 simple
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Para agregar nuevas rutas:
+1. Crear la página en `src/pages/...`
+2. Editar `src/routes/index.jsx` agregando el objeto de ruta apropiado como hijo del layout correspondiente.
+
+En `App.jsx` ahora se renderiza: `<AppRoutes />`.
+
+## Providers Globales
+
+Se añadió un patrón para centralizar contextos globales:
+
+- Carpeta: `src/providers/`
+	- `AuthProvider.jsx`: Placeholder con `user`, `login`, `logout`, `isAuthenticated` y `loading`.
+	- `Providers.jsx`: Encapsula todos los providers y se utiliza en `App.jsx`.
+
+Uso en componentes:
+```jsx
+import { useAuth } from '../providers/AuthProvider.jsx';
+
+const Perfil = () => {
+	const { user, logout } = useAuth();
+	return (
+		<div>
+			<p>Hola {user?.name}</p>
+			<button onClick={logout}>Salir</button>
+		</div>
+	);
+};
+```
+
+Para añadir nuevos providers (ej. ThemeProvider, React Query):
+1. Crear el provider en `src/providers/NombreProvider.jsx`.
+2. Importarlo y envolverlo dentro de `Providers.jsx`.
+
+Ejemplo rápido:
+```jsx
+// Providers.jsx
+import { AuthProvider } from './AuthProvider.jsx';
+import { ThemeProvider } from './ThemeProvider.jsx';
+
+const Providers = ({ children }) => (
+	<AuthProvider>
+		<ThemeProvider>
+			{children}
+		</ThemeProvider>
+	</AuthProvider>
+);
+```
