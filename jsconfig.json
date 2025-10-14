@@ -10,6 +10,7 @@
       "@components/*": ["components/*"],
       "@ui/*": ["components/ui/*"],
       "@features/*": ["components/features/*"],
+      "@sections/*": ["components/sections/*"],
       "@hooks/*": ["hooks/*"],
       "@lib/*": ["lib/*"],
       "@services/*": ["services/*"],
