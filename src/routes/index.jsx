@@ -3,7 +3,7 @@ import MainLayout from '../layouts/MainLayout.jsx';
 import AuthLayout from '../layouts/AuthLayout.jsx';
 import AdminLayout from '../layouts/AdminLayout.jsx';
 
-import Landing from '../pages/Landing.jsx';
+import Landing from '../pages/Home.jsx';
 import Login from '../pages/auth/Login.jsx';
 import Register from '../pages/auth/Register.jsx';
 import AdminDashboard from '../pages/admin/Dashboard.jsx';

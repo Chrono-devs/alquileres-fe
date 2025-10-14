@@ -4,7 +4,7 @@ import AuthLayout from '@layouts/AuthLayout.jsx';
 import AdminLayout from '@layouts/AdminLayout.jsx';
 
 // Pages
-import Landing from '@pages/Landing.jsx';
+import Home from '@/pages/Home.jsx';
 import Login from '@pages/auth/Login.jsx';
 import Register from '@pages/auth/Register.jsx';
 import AdminDashboard from '@pages/admin/Dashboard.jsx';
@@ -17,7 +17,7 @@ const AppRoutes = () => {
       <Routes>
         {/* Rutas públicas con MainLayout */}
         <Route element={<MainLayout />}> 
-          <Route index element={<Landing />} />
+          <Route path='/' element={<Home />} />
         </Route>
 
         {/* Rutas de autenticación */}
