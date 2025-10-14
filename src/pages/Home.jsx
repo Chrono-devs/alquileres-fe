@@ -1,10 +1,10 @@
-import SearchRent from "@/components/sections/SearchRent";
+import SearchRent from "@/components/features/SearchRent";
 
 const Home = () => {
 
   // Página del usuario comun
   return (
-    <section className="max-w-5xl mx-auto p-8">
+    <section className="max-w-5xl mx-auto py-8">
       <SearchRent />
     </section>
   );
