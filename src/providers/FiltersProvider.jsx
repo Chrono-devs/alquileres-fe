@@ -1,29 +1,10 @@
 import { createContext, useCallback, useContext, useMemo, useState } from 'react';
+import { PROVINCES, PROPERTY_TYPES } from '@constants/filters';
 
 // Estado global de filtros de búsqueda de alquileres
 const FiltersContext = createContext(null);
 
-// Listas base
-export const PROVINCES = [
-  'CABA',
-  'Buenos Aires',
-  'Entre Ríos',
-  'Córdoba',
-  'Santa Fe',
-  'Mendoza',
-  'San Luis',
-  'Neuquén',
-  'Río Negro',
-];
-
-export const PROPERTY_TYPES = [
-  'Departamento',
-  'Casa',
-  'PH',
-  'Terreno',
-  'Local',
-  'Oficina',
-];
+// Listas base importadas desde @constants/filters
 
 export const FiltersProvider = ({ children }) => {
   // Precio
