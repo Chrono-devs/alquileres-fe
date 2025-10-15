@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+/* Modal base (used by ModalProvider) */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  overscroll-behavior: contain;
+  pointer-events: auto;
+}
+
+.modal > div {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
+  position: relative;
+  pointer-events: auto;
+}
+
+.close-button {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  color: #4b5563;
+  cursor: pointer;
+}
+.close-button:hover { color: #1f2937; }
+
+.modal-panel {
+  width: 100%;
+  max-width: 48rem;
+  background: #fff;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  box-shadow: 0 -10px 15px -3px rgba(0,0,0,0.1), 0 -4px 6px -4px rgba(0,0,0,0.1);
+  padding: 16px;
+  position: relative;
+}
+
+.modal-handle {
+  width: 48px;
+  height: 6px;
+  background: #d1d5db;
+  border-radius: 9999px;
+  margin: 4px auto 12px;
+  display: none ;
+}
+
+.filter-section-title { font-size: 0.875rem; color: #6b7280; }
+.filter-row { display: flex; align-items: center; justify-content: space-between; }
+.filter-reset { color: #6d28d9; font-size: 0.875rem; font-weight: 500; cursor: pointer; user-select: none; }
+
+/* Mobile-only scrollable body + sticky footer */
+@media (max-width: 640px) {
+  .modal-sheet .modal-panel {
+    height: 85vh; /* altura fija para garantizar área scroll interna */
+    display: flex;
+    flex-direction: column;
+    padding: 8px 16px 0 16px; /* footer lleva su propio padding */
+  }
+
+  .sheet-body {
+    /* clave para que el body scrollee dentro del panel */
+    flex: 1 1 auto;
+    min-height: 0; /* permite que el flex item pueda encoger y activar scroll */
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
+    overscroll-behavior: contain;
+    padding-bottom: 12px;
+  }
+
+  .sheet-footer {
+    position: sticky; /* opcional: si el contenedor fuera el scroll, permanece visible */
+    bottom: 0; 
+    background: #ffffff;
+    padding: 18px 0 calc(18px + env(safe-area-inset-bottom)) 0;
+    border-top: 1px solid #e5e7eb;
+  }
+
+  .modal-handle { display: block; }
+  .modal-sheet { align-items: flex-end; }
+}

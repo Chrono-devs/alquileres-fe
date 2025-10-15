@@ -6,6 +6,7 @@ const Home = () => {
   return (
     <section className="max-w-5xl mx-auto py-8">
       <SearchRent />
+      
     </section>
   );
 };
