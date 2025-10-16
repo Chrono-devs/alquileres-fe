@@ -9,8 +9,8 @@ const Home = () => {
 
   // Página del usuario comun
   return (
-    <main className="max-w-6xl mx-auto px-4 sm:mt-4">
-      <section className="py-4 sm:py-6">
+    <main className="max-w-6xl mx-auto px-4 mt-2 sm:mt-4">
+      <section className="py-4 mb-4 sm:py-6">
         <SearchRent />
       </section>
       <CategoryTitle text="Propiedades destacadas" />
@@ -95,7 +95,7 @@ const Home = () => {
         />
       </section>
       <CategoryTitle text="Zonas destacadas" />
-      <section className="py-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-14 md:gap-6">
+      <section className="py-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-14 md:gap-6">
         <ZoneCard title="Palermo" linkUrl="/zona/palermo" />
         <ZoneCard title="Belgrano" linkUrl="/zona/belgrano" />
         <ZoneCard title="Recoleta" linkUrl="/zona/recoleta" />

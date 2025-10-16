@@ -39,7 +39,7 @@ const FAQItem = ({ id, question, answer, open, onToggle }) => {
         onClick={onToggle}
         type="button"
       >
-        <span className="text-gray-900 font-medium">{question}</span>
+        <span className="text-gray-950 text-md font-medium">{question}</span>
         <svg
           className={`ml-3 h-5 w-5 text-gray-500 transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
           viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
@@ -53,7 +53,7 @@ const FAQItem = ({ id, question, answer, open, onToggle }) => {
         aria-labelledby={buttonId}
         className={`overflow-hidden transition-[max-height] duration-200 ${open ? 'max-h-64' : 'max-h-0'}`}
       >
-        <div className="pb-4 md:pb-5 text-sm text-gray-600 leading-relaxed">
+        <div className="pb-4 md:pb-5 text-md text-gray-600 leading-relaxed">
           {answer}
         </div>
       </div>
@@ -74,8 +74,8 @@ const FAQ = ({ items }) => {
   };
 
   return (
-    <section className="bg-white border border-gray-200 rounded-xl shadow-sm">
-      <div className="p-4 md:p-6">
+    <section className="bg-white">
+      <div className="">
         {data.map((item, idx) => (
           <FAQItem
             key={idx}
