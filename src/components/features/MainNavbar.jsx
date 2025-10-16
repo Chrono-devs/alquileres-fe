@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 const MainNavbar = () => {
 	return (
 		<nav
-			className="fixed top-0 left-0 w-full h-22 z-50 bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60"
+			className="fixed top-0 left-0 border border-gray-300 w-full h-16 z-50 bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60"
 			role="navigation"
 			aria-label="Main navigation"
 		>
-			<div className="mx-auto max-w-7xl h-full px-4 sm:px-6 flex items-center justify-between gap-6">
+			<div className="mx-auto max-w-6xl h-full px-4 flex items-center justify-between gap-6">
 				{/* Left actions */}
 				<div className="select-none">
 					<Link

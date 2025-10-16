@@ -65,34 +65,45 @@ export const useModal = () => {
 // Renderiza el modal en un portal cuando está abierto
 const ModalRenderer = ({ state, close }) => {
   const { isOpen, content, props, options } = state;
+  const [exiting, setExiting] = useState(false);
+
+  const requestClose = useCallback(() => {
+    // Reproduce animación de salida antes de desmontar
+    setExiting(true);
+    const timeout = setTimeout(() => {
+      close();
+      setExiting(false);
+    }, 230); // debe sincronizar con la duración en CSS
+    return () => clearTimeout(timeout);
+  }, [close]);
 
   // Cerrar con tecla Escape
   useEffect(() => {
     if (!isOpen) return;
-    const onKey = (e) => { if (e.key === 'Escape') close(); };
+    const onKey = (e) => { if (e.key === 'Escape') requestClose(); };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [isOpen, close]);
+  }, [isOpen, requestClose]);
 
   if (!isOpen) return null;
 
   const handleBackdrop = (e) => {
-    if (options?.closeOnBackdrop && e.target === e.currentTarget) close();
+    if (options?.closeOnBackdrop && e.target === e.currentTarget) requestClose();
   };
 
   const contentNode = typeof content === 'function'
-    ? content({ close, ...props })
+    ? content({ close: requestClose, ...props })
     : content;
 
   const modal = (
-    <div className={`modal ${options?.overlayClassName || ''}`} onClick={handleBackdrop}>
-      <div className={options?.panelClassName}
+    <div className={`modal ${options?.overlayClassName || ''} ${exiting ? 'closing' : ''}`} onClick={handleBackdrop}>
+      <div className={`${options?.panelClassName} ${exiting ? 'is-closing' : ''}`}
       >
         {options?.showCloseButton && (
           <button
             aria-label="Cerrar"
             className="close-button"
-            onClick={close}
+            onClick={requestClose}
             type="button"
           >
             ✕

@@ -3,8 +3,9 @@ import { FiHeart } from "react-icons/fi";
 import { useState } from "react";
 
 import ArsPrice from "@/utils/ArsPrice";
+import { Link } from "react-router-dom";
 
-const RentCard = ({ title, price, imageUrl, size, location, rooms }) => {
+const RentCard = ({ id, title, price, imageUrl, size, location, rooms }) => {
     const [isFavorited, setIsFavorite] = useState(false);
 
     const handleFavoriteToggle = () => {
@@ -17,8 +18,8 @@ const RentCard = ({ title, price, imageUrl, size, location, rooms }) => {
 
     return (
         <div className="flex flex-col gap-2">
-            <div className="relative">
-                <img className=" border border-gray-300 h-52 rounded-lg w-full shadow-md" src={imageUrl} alt={title} />
+            <Link to={`/detalle/${id}`} className="relative group">
+                <img className=" border border-gray-300 h-52 rounded-lg w-full shadow-md object-cover" src={imageUrl} alt={title} />
                 <button
                     type="button"
                     aria-label="Agregar a favoritos"
@@ -28,7 +29,7 @@ const RentCard = ({ title, price, imageUrl, size, location, rooms }) => {
                 >
                     <FiHeart size={20} />
                 </button>
-            </div>
+            </Link>
             <span className="font-semibold text-xl">$ {ArsPrice(price)} / mes</span>
             <div className="flex justify-between max-w-8 gap-3">
                 <span className="flex items-center text-md font-semibold tracking-wide text-gray-950 gap-2 border-r border-gray-400 pr-3" ><FaExpand className="text-purple-500" /><span>{size}m²</span></span>

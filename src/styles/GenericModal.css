@@ -55,13 +55,61 @@
 .filter-row { display: flex; align-items: center; justify-content: space-between; }
 .filter-reset { color: #6d28d9; font-size: 0.875rem; font-weight: 500; cursor: pointer; user-select: none; }
 
+/* Desktop animations (aplican en >=641px, incluyendo modal-sheet) */
+@media (min-width: 641px) {
+  .modal {
+    /* overlay fade-in al abrir */
+    animation: overlay-fade-in-desktop 200ms ease-out;
+  }
+
+  .modal.closing {
+    /* overlay fade-out al cerrar */
+    animation: overlay-fade-out-desktop 180ms ease-in forwards;
+  }
+
+  .modal > div {
+    /* panel fade+scale al abrir */
+    animation: panel-zoom-in 220ms ease-out;
+    transform-origin: center;
+    will-change: transform, opacity;
+  }
+
+  .modal > div.is-closing {
+    /* panel fade+scale al cerrar */
+    animation: panel-zoom-out 180ms ease-in forwards;
+  }
+}
+
+@keyframes overlay-fade-in-desktop {
+  from { background: rgba(0, 0, 0, 0); }
+  to   { background: rgba(0, 0, 0, 0.4); }
+}
+
+@keyframes overlay-fade-out-desktop {
+  from { background: rgba(0, 0, 0, 0.4); }
+  to   { background: rgba(0, 0, 0, 0); }
+}
+
+@keyframes panel-zoom-in {
+  from { opacity: 0; transform: translateY(8px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes panel-zoom-out {
+  from { opacity: 1; transform: translateY(0) scale(1); }
+  to   { opacity: 0; transform: translateY(8px) scale(0.98); }
+}
+
 /* Mobile-only scrollable body + sticky footer */
 @media (max-width: 640px) {
   .modal-sheet .modal-panel {
-    height: 85vh; /* altura fija para garantizar área scroll interna */
+    height: 80vh; /* altura fija para garantizar área scroll interna */
     display: flex;
     flex-direction: column;
     padding: 8px 16px 0 16px; /* footer lleva su propio padding */
+    /* Animación de entrada desde abajo */
+    animation: sheet-slide-up 220ms ease-out;
+    will-change: transform;
   }
 
   .sheet-body {
@@ -85,4 +133,31 @@
 
   .modal-handle { display: block; }
   .modal-sheet { align-items: flex-end; }
+
+  @keyframes sheet-slide-up {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+  }
+
+  /* Estado de cierre: animación hacia abajo y desvanecer backdrop */
+  .modal.closing { animation: overlay-fade-out 220ms ease-out forwards; }
+  .modal-sheet .is-closing { animation: sheet-slide-down 220ms ease-in forwards; }
+
+  /* Estado de apertura: desvanecer backdrop al aparecer */
+  .modal.modal-sheet:not(.closing) { animation: overlay-fade-in 220ms ease-out; }
+
+  @keyframes sheet-slide-down {
+    from { transform: translateY(0); }
+    to { transform: translateY(100%); }
+  }
+
+  @keyframes overlay-fade-out {
+    from { background: rgba(0, 0, 0, 0.4); }
+    to   { background: rgba(0, 0, 0, 0); }
+  }
+
+  @keyframes overlay-fade-in {
+    from { background: rgba(0, 0, 0, 0); }
+    to   { background: rgba(0, 0, 0, 0.4); }
+  }
 }
