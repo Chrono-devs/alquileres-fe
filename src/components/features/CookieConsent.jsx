@@ -73,14 +73,13 @@ const CookieConsent = () => {
               <button
                 type="button"
                 onClick={accept}
-                className="inline-flex items-center justify-center cursor-pointer rounded-lg bg-white text-purple-600 text-md font-medium px-6 py-3 hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-2 transition-colors"
+                className="inline-flex items-center justify-center cursor-pointer rounded-lg bg-white text-purple-600 font-semibold text-md px-6 py-3 hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 shadow-md focus-visible:ring-offset-2 transition-colors"
               >
                 Aceptar
               </button>
-              {/* Enlace opcional a política (ajusta la ruta cuando tengas la página) */}
               <a
                 href="#"
-                className="text-md text-gray-100 hover:text-gray-100 underline underline-offset-2"
+                className="text-md text-gray-100 hover:text-gray-100 underline font-semibold underline-offset-2"
                 rel="nofollow"
               >
                 Más información

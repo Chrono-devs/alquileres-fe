@@ -7,7 +7,6 @@ const Breadcrumb = ({ items = [], backHref, onBack, maxItems = 5, className = ''
   const getDisplayItems = (list, limit) => {
     if (!Array.isArray(list) || list.length === 0) return [];
     if (!limit || list.length <= limit) return list;
-    // Keep first and last (limit - 2) items, collapse the middle
     const head = list[0];
     const tailCount = Math.max(1, limit - 2);
     const tail = list.slice(-tailCount);
@@ -24,7 +23,6 @@ const Breadcrumb = ({ items = [], backHref, onBack, maxItems = 5, className = ''
             <FiArrowLeft /> Volver
           </Link>
         ) : (
-          // eslint-disable-next-line jsx-a11y/anchor-is-valid
           <a onClick={onBack} className="inline-flex items-center gap-1 text-purple-600 hover:underline text-xs sm:text-sm cursor-pointer">
             <FiArrowLeft /> Volver
           </a>
