@@ -159,7 +159,7 @@ const SearchRent = () => {
     };
 
     return (
-        <section className="flex items-center md:pb-4 pt-2">
+        <section className="flex items-center md:pb-4">
             <form action="#" method="GET" className="flex w-full px-2.5 py-2 mx-auto shadow-lg border border-gray-300 rounded-full overflow-hidden">
                 <input type="text" className="flex-grow px-6 text-lg focus:outline-none" required placeholder="Buscar propiedades en alquiler" />
                 <div className="flex gap-2">
