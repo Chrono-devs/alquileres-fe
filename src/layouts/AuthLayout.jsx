@@ -1,4 +1,5 @@
 import { Outlet } from 'react-router-dom';
+import CookieConsent from '@/components/features/CookieConsent.jsx';
 
 // Layout para autenticación (login / register)
 const AuthLayout = () => {
@@ -7,6 +8,7 @@ const AuthLayout = () => {
       <div className="w-full max-w-md bg-white shadow rounded-lg p-6">
         <Outlet />
       </div>
+      <CookieConsent />
     </div>
   );
 };

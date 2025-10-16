@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import MainNavbar from '@/components/features/MainNavbar.jsx';
 import Footer from '@/components/features/Footer';
+import CookieConsent from '@/components/features/CookieConsent.jsx';
 
 // Layout principal para la app pública / landing
 const MainLayout = () => {
@@ -12,6 +13,8 @@ const MainLayout = () => {
         <Outlet />
       </div>
       <Footer />
+      {/* Banner de cookies global (solo se muestra si no se aceptó) */}
+      <CookieConsent />
     </div>
   );
 };

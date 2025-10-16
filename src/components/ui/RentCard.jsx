@@ -30,11 +30,11 @@ const RentCard = ({ id, title, price, imageUrl, size, location, rooms }) => {
                     <FiHeart size={20} />
                 </button>
             </Link>
-            <span className="font-semibold text-xl">$ {ArsPrice(price)} / mes</span>
+            <span className="font-semibold text-xl">$ <span className="font-sans">{ArsPrice(price)}</span> / mes</span>
             <div className="flex justify-between max-w-8 gap-3">
-                <span className="flex items-center text-md font-semibold tracking-wide text-gray-950 gap-2 border-r border-gray-400 pr-3" ><FaExpand className="text-purple-500" /><span>{size}m²</span></span>
-                <span className="flex items-center text-md font-semibold tracking-wide text-gray-950 gap-1 border-r border-gray-400 pr-3" ><FaMapMarkerAlt className="text-purple-500" /><span>{location}</span></span>
-                <span className="flex items-center text-md font-semibold tracking-wide text-gray-950 gap-2" ><FaBed className="text-purple-500" /><span>{rooms}</span></span>
+                <span className="flex items-center text-md font-semibold tracking-wide text-gray-950 gap-2 border-r border-gray-400 pr-3" ><FaExpand className="text-purple-500" /><span className="font-sans">{size}m²</span></span>
+                <span className="flex items-center text-md font-semibold tracking-wide text-gray-950 gap-1 border-r border-gray-400 pr-3" ><FaMapMarkerAlt className="text-purple-500" /><span className="font-sans">{location}</span></span>
+                <span className="flex items-center text-md font-semibold tracking-wide text-gray-950 gap-2" ><FaBed className="text-purple-500" /><span className="font-sans">{rooms}</span></span>
             </div>
         </div>
     );

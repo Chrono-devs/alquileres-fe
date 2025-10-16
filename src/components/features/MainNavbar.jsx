@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
-import { FiMenu } from 'react-icons/fi';
+import DownMenu from '@features/DownMenu';
 
 const MainNavbar = () => {
 	return (
 		<nav
-			className="fixed top-0 left-0 w-full h-16 z-50 bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60"
+			className="fixed top-0 left-0 w-full h-22 z-50 bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60"
 			role="navigation"
 			aria-label="Main navigation"
 		>
@@ -18,14 +18,20 @@ const MainNavbar = () => {
 					</Link>
 				</div>
 				<div className="items-center gap-4 hidden sm:flex">
-					<Link to="/ayuda" className="text-md font-medium tracking-wider text-black/90 hover:text-black focus-visible:outline-none rounded-sm transition-colors">
-						Ayuda
-					</Link>
 					<Link
 						to="/publicar"
 						className="text-md font-medium tracking-wider text-black/90 hover:text-black focus-visible:outline-none rounded-sm transition-colors"
 					>
 						Publicar
+					</Link>
+					<Link
+						to="/propriedades"
+						className="text-md font-medium tracking-wider text-black/90 hover:text-black focus-visible:outline-none rounded-sm transition-colors"
+					>
+						Propiedades
+					</Link>
+					<Link to="/ayuda" className="text-md font-medium tracking-wider text-black/90 hover:text-black focus-visible:outline-none rounded-sm transition-colors">
+						Ayuda
 					</Link>
 					<Link
 						to="/blog"
@@ -34,7 +40,14 @@ const MainNavbar = () => {
 						Blog
 					</Link>
 				</div>
-				<FiMenu size={32} className="w-6 h-6 text-gray-600 hover:text-gray-800 cursor-pointer sm:min-w-32" />
+				<DownMenu links={
+					[
+						{ label: 'Iniciar sesión', url: '/login' },
+						{ label: 'Crear cuenta', url: '/register' },
+						{ label: 'Publicar', url: '/publicar' },
+						{ label: 'Ayuda', url: '/ayuda' },
+						{ label: 'Blog', url: '/blog' },
+					]} />
 			</div>
 		</nav>
 	);
