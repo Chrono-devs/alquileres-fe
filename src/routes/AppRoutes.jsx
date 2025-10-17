@@ -9,6 +9,7 @@ import Login from '@pages/auth/Login.jsx';
 import Register from '@pages/auth/Register.jsx';
 import AdminDashboard from '@pages/admin/Dashboard.jsx';
 import NotFound from '@pages/NotFound.jsx';
+import SearchPage from '@/pages/Search';
 
 // Componente que encapsula toda la definición de rutas usando la sintaxis declarativa
 const AppRoutes = () => {
@@ -18,6 +19,7 @@ const AppRoutes = () => {
         {/* Rutas públicas con MainLayout */}
         <Route element={<MainLayout />}> 
           <Route path='/' element={<Home />} />
+          <Route path='/propriedades' element={<SearchPage />} />
         </Route>
 
         {/* Rutas de autenticación */}

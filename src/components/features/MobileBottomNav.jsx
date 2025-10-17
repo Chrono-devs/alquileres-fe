@@ -6,7 +6,7 @@ import { FiSearch, FiHome, FiHelpCircle, FiBookOpen } from 'react-icons/fi';
 const MobileBottomNav = () => {
   const items = [
       { to: '/', label: 'Inicio', Icon: FiHome },
-    { to: '/search', label: 'Buscar', Icon: FiSearch },
+    { to: '/propriedades', label: 'Buscar', Icon: FiSearch },
     { to: '/ayuda', label: 'Ayuda', Icon: FiHelpCircle },
     { to: '/blog', label: 'Blog', Icon: FiBookOpen },
   ];
