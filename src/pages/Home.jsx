@@ -2,50 +2,16 @@ import SearchRent from "@/components/features/SearchRent";
 import CategorySubtitle from "@/components/ui/CategorySubtitle";
 import CategoryTitle from "@/components/ui/CategoryTitle";
 import RentCard from "@/components/ui/RentCard";
-import { useEffect, useState } from 'react';
-import { NO_RESPONSE_MESSAGE } from '@/utils/errorHandler';
-import { getAllRents, getAllRentsDestacados } from '@/services/rentsService';
+import useRents from '@/hooks/useRents';
 import ZoneCard from "@/components/ui/ZoneCard";
 import FAQ from "@/components/features/FAQ";
 import Skeleton from "@/components/ui/Skeleton";
 
 const Home = () => {
-  const [featured, setFeatured] = useState([]);
-  const [others, setOthers] = useState([]);
-  const [loadingFeatured, setLoadingFeatured] = useState(true);
-  const [loadingOthers, setLoadingOthers] = useState(true);
 
-  useEffect(() => {
-    let mounted = true;
-    (async () => {
-      const f = await getAllRentsDestacados();
-      if (mounted) {
-        if (Array.isArray(f)) {
-          setFeatured(f);
-          setLoadingFeatured(false);
-        } else if (f && f.message !== NO_RESPONSE_MESSAGE) {
-          // Hubo error, pero no es por falta de respuesta: dejamos de cargar para no bloquear UI
-          setFeatured([]);
-          setLoadingFeatured(false);
-        }
-        // Si no hubo respuesta, mantenemos loading en true
-      }
 
-      const n = await getAllRents();
-      if (mounted) {
-        if (Array.isArray(n)) {
-          setOthers(n);
-          setLoadingOthers(false);
-        } else if (n && n.message !== NO_RESPONSE_MESSAGE) {
-          setOthers([]);
-          setLoadingOthers(false);
-        }
-      }
-    })();
-    return () => { mounted = false; };
-  }, []);
+  const { featured, others, loadingFeatured, loadingOthers } = useRents();
 
-  // Página del usuario comun
   return (
     <main className="max-w-6xl mx-auto px-4 mt-2 sm:mt-4">
       <section className="py-4 mb-4 sm:py-6">
