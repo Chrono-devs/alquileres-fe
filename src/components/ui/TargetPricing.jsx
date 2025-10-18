@@ -1,34 +1,32 @@
 import { CustomButton } from "./CustomButton";
+import ArsPrice from '@utils/ArsPrice';
 
-const TargetPricing= ({planName, popular, price, description, buttonText, list = []}) => {
-    return(
-        <div className="bg-gray-100 w-72 h-96 p-6 rounded-lg text-center space-y-4 shadow-md">
-            <div className="inline-flex overflow-hidden ">
-                <span className="bg-purple-600 text-white px-5 py-1 text-sm rounded-md relative z-10 -mr-2">{planName}</span>
-                <span className="bg-gray-200 text-purple-500 px-5 py-1 text-sm rounded-md">{popular}</span>
-            </div>
-
-            <div className="flex items-baseline justify-center space-x-2 mt-5">
-                <span className="text-xl font-bold text-black relative -top-4">$</span>
-                <span className="text-3xl font-sans text-black relative -top-2 text-">{price}</span>
-                <span className="text-gray-500 ml-1">/ month</span>
-            </div>
-
-            <p className="text-gray-600 text-sm">{description}</p>
-
-            <hr className="text-gray-200 mx-auto"/>
-
-            <div className="flex flex-col space-y-5 text-gray-700 text-sm leading-none w-full text-left">
-                {list.map((item, index)=> (
-                    <div key={index}>{item}</div>
+const TargetPricing = ({ planName, popular, price, description, buttonText, list = [] }) => {
+    return (
+        <figure className="bg-gray-100 rounded-lg text-center flex flex-col justify-between space-y-4 shadow-md">
+            <header className="inline-flex overflow-hidden px-6 pt-6 w-full">
+                <span className="bg-purple-600 text-white py-2 w-full text-md tracking-widest font-semibold rounded-md z-10 -mr-2">{planName}</span>
+                <span className="bg-gray-200 text-purple-600 py-2 w-full text-md tracking-widest font-semibold rounded-md">{popular}</span>
+            </header>
+            <section className="flex items-baseline justify-center space-x-2 mt-2">
+                <span className="text-2xl font-medium text-black">$</span>
+                <span className="text-4xl font-sans text-black">{ArsPrice(price)}</span>
+                <span className="text-gray-500 text-lg ml-1">/ mes</span>
+            </section>
+            <aside>
+                <p className="text-gray-600 text-md">{description}</p>
+            </aside>
+            <hr className="text-gray-300 w-full" />
+            <ul className="flex flex-col space-y-5  p-6 text-gray-700 text-md w-full text-left">
+                {list.map((item, index) => (
+                    <li className=" text-md list-inside list-none" key={index}>{item}</li>
                 ))}
-            </div>
-
-            <hr className="text-gray-200 mx-auto" />
-
-            <CustomButton labelText={buttonText} className="w-full"/>
-
-        </div>
+            </ul>
+            <hr className="text-gray-300 w-full" />
+            <footer className="px-6 pb-6">
+                <CustomButton labelText={buttonText} className="w-full" />
+            </footer>
+        </figure>
     )
 }
 
