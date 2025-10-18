@@ -1,6 +1,8 @@
 import { FiSearch, FiFilter } from "react-icons/fi";
 import { useModal } from "@providers/ModalProvider.jsx";
 import { useFilters } from "@providers/FiltersProvider.jsx";
+import CustomSelect from "@ui/CustomSelect.jsx";
+import CustomSpan from "@ui/CustomSpan.jsx";
 
 const SearchRent = () => {
     const { open } = useModal();
@@ -38,11 +40,11 @@ const SearchRent = () => {
                     </div>
                     <div className="grid grid-cols-2 gap-3">
                         <label className="flex flex-col gap-1">
-                            <span className="text-sm text-gray-600">Mínimo</span>
+                            <CustomSpan>Mínimo</CustomSpan>
                             <input type="number" value={minPrice} onChange={(e) => setMinPrice(e.target.value)} className="border border-gray-400 rounded-xl px-3 py-2" placeholder="0" />
                         </label>
                         <label className="flex flex-col gap-1">
-                            <span className="text-sm text-gray-600">Máximo</span>
+                            <CustomSpan>Máximo</CustomSpan>
                             <input type="number" value={maxPrice} onChange={(e) => setMaxPrice(e.target.value)} className="border border-gray-400 rounded-xl px-3 py-2" placeholder="100000" />
                         </label>
                     </div>
@@ -53,16 +55,19 @@ const SearchRent = () => {
                         <button type="button" className="filter-reset" onClick={resetLocation}>Reset</button>
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <label className="flex flex-col gap-1">
-                            <span className="text-sm text-gray-600">Provincia</span>
-                            <select value={province} onChange={(e) => setProvince(e.target.value)} className="border border-gray-400 rounded-xl px-3 py-2">
-                                <option value="">Todas</option>
-                                {provinces.map(p => <option key={p} value={p}>{p}</option>)}
-                            </select>
+                        <label htmlFor="province" className="flex flex-col gap-1">
+                            <CustomSpan>Provincia</CustomSpan>
+                            <CustomSelect
+                                id="province"
+                                placeholder="Todas"
+                                items={provinces.map(p => ({ label: p, value: p }))}
+                                value={province}
+                                onChange={(newValue) => setProvince(newValue)}
+                            />
                         </label>
-                        <label className="flex flex-col gap-1">
-                            <span className="text-sm text-gray-600">Localidad</span>
-                            <input type="text" value={locality} onChange={(e) => setLocality(e.target.value)} className="border border-gray-400 rounded-xl px-3 py-2" placeholder="Ej: Palermo" />
+                        <label htmlFor="locality" className="flex flex-col gap-1">
+                            <CustomSpan>Localidad</CustomSpan>
+                            <input type="text" id="locality" value={locality} onChange={(e) => setLocality(e.target.value)} className="border border-gray-400 rounded-xl px-3 py-2" placeholder="Ej: Palermo" />
                         </label>
                     </div>
 
