@@ -49,7 +49,7 @@ const Register = () => {
   };
 
   return (
-    <div>
+    <div className="flex-1">
       <h1 className="text-xl font-bold">Crear cuenta</h1>
       <form className="flex flex-col gap-4 my-8" onSubmit={handleSubmit}>
         <FormInput label="Nombre" id="name" placeholder="Lionel" />
@@ -66,7 +66,7 @@ const Register = () => {
           <button
             type="button"
             onClick={() => setPasswordVisible(!passwordVisible)}
-            className="absolute right-0 top-0 text-stone-600 hover:text-stone-400 cursor-pointer border border-stone-300 py-2 px-1"
+            className="absolute right-0 bottom-0.5 text-stone-600 hover:text-stone-400 cursor-pointer py-2 px-1"
           >
             {passwordVisible ? <ClosedEye /> : <OpenEye />}
           </button>
@@ -81,7 +81,7 @@ const Register = () => {
           <button
             type="button"
             onClick={() => setRepeatPasswordVisible(!repeatPasswordVisible)}
-            className="absolute right-0 top-0 text-stone-600 hover:text-stone-400 cursor-pointer border border-stone-300 py-2 px-1"
+            className="absolute right-0 bottom-0.5 text-stone-600 hover:text-stone-400 cursor-pointer py-2 px-1"
           >
             {repeatPasswordVisible ? <ClosedEye /> : <OpenEye />}
           </button>

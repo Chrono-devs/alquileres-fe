@@ -3,6 +3,7 @@ import { useModal } from "@providers/ModalProvider.jsx";
 import { useFilters } from "@providers/FiltersProvider.jsx";
 import CustomSelect from "@ui/CustomSelect.jsx";
 import CustomSpan from "@ui/CustomSpan.jsx";
+import ValueInput from "./ValueInput";
 
 const SearchRent = () => {
     const { open } = useModal();
@@ -41,10 +42,7 @@ const SearchRent = () => {
                             <CustomSpan>Mínimo</CustomSpan>
                             <input type="number" value={minPrice} onChange={(e) => setMinPrice(e.target.value)} className="border border-gray-400 rounded-xl px-3 py-2" placeholder="0" />
                         </label>
-                        <label className="flex flex-col gap-1">
-                            <CustomSpan>Máximo</CustomSpan>
-                            <input type="number" value={maxPrice} onChange={(e) => setMaxPrice(e.target.value)} className="border border-gray-400 rounded-xl px-3 py-2" placeholder="100000" />
-                        </label>
+                        <ValueInput type="number" label="Máximo" value={maxPrice} onChange={(e) => setMaxPrice(e.target.value)} />
                     </div>
                     <div className="filter-row mt-2">
                         <h3 className="text-base font-medium">Ubicación</h3>

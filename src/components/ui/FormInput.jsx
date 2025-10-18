@@ -1,7 +1,11 @@
+import CustomSpan from "@ui/CustomSpan";
+
 export const FormInput = ({ label, type = "text", id, placeholder }) => {
   return (
-    <label htmlFor={id} className="flex justify-between items-center">
-      {label}
+    <label htmlFor={id} className="flex flex-col gap-1">
+      <CustomSpan>
+        {label}
+      </CustomSpan>
       <input
         type={type}
         id={id}
