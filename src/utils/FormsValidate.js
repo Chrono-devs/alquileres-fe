@@ -1,6 +1,6 @@
 import { z } from "zod/v4";
 
-export const registerSchema = z.object({
+const registerSchema = z.object({
   name: z
     .string("Es necesario proporcionar un nombre valido")
     .min(3, "El nombre debe contener al menos 3 caracteres")
@@ -27,6 +27,22 @@ export const registerSchema = z.object({
     .max(10, "El número de teléfono debe contener 10 dígitos"),
 },"Es necesario proporcionar un body válido");
 
+const loginSchema = z.object({
+  email: z
+    .string("Es necesario proporcionar un email valido")
+    .regex(
+      /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+      "El email debe tener un formato valido"
+    ),
+  password: z
+    .string("Es necesario proporcionar una contraseña valida")
+    .min(8, "La contraseña debe contener al menos 8 caracteres")
+});
+
 export const validateRegister = (data) => {
   return registerSchema.safeParse(data);
+};
+
+export const validateLogin = (data) => {
+  return loginSchema.safeParse(data);
 };
