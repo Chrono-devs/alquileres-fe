@@ -26,7 +26,7 @@ const TargetPricing= ({planName, popular, price, description, buttonText, list =
 
             <hr className="text-gray-200 mx-auto" />
 
-            <CustomButton labelText={buttonText}/>
+            <CustomButton labelText={buttonText} className="w-full"/>
 
         </div>
     )
