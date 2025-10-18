@@ -1,45 +1,18 @@
-import { createContext, useContext, useState, useCallback, useMemo } from 'react';
+import { createContext,  useEffect, useState } from "react";
 
-// Contexto de autenticación (placeholder). Reemplazar lógica con API real más adelante.
-const AuthContext = createContext(null);
+export const AuthContext = createContext({user: null, setUser: () => {}});
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null); // { id, name, role } | null
-  const [loading, setLoading] = useState(false);
+  const savedUser = JSON.parse(localStorage.getItem("myStoreUser") || "null");
+  const [user, setUser] = useState(savedUser);
 
-  const login = useCallback(async ({ email, password }) => {
-    setLoading(true);
-    try {
-      // TODO: Llamar a API real. Simulación:
-      await new Promise(r => setTimeout(r, 500));
-      setUser({ id: 1, name: 'Demo User', role: 'admin', email });
-      return { ok: true };
-    } catch (e) {
-      return { ok: false, error: 'Error de login' };
-    } finally {
-      setLoading(false);
-    }
-  }, []);
+  useEffect(() => {
+    localStorage.setItem("myStoreUser", JSON.stringify(user));
+  }, [user]);
 
-  const logout = useCallback(() => {
-    setUser(null);
-  }, []);
-
-  const value = useMemo(() => ({
-    user,
-    isAuthenticated: !!user,
-    loading,
-    login,
-    logout,
-  }), [user, loading, login, logout]);
-
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={{ user, setUser }}>
+      {children}
+    </AuthContext.Provider>
+  );
 };
-
-export const useAuth = () => {
-  const ctx = useContext(AuthContext);
-  if (!ctx) throw new Error('useAuth debe usarse dentro de <AuthProvider>');
-  return ctx;
-};
-
-export default AuthProvider;
