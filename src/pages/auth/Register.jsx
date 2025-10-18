@@ -6,9 +6,13 @@ import { registerUser } from "@/api/authentication";
 import loader from "../../assets/loader.svg";
 import { CustomButton } from "@/components/ui/CustomButton";
 import { toast } from "sonner";
+import { ClosedEye } from "@/assets/ClosedEye";
+import { OpenEye } from "@/assets/OpenEye";
 
 const Register = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [passwordVisible, setPasswordVisible] = useState(false);
+  const [repeatPasswordVisible, setRepeatPasswordVisible] = useState(false);
   const nav = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -25,6 +29,12 @@ const Register = () => {
       );
       return;
     }
+
+    if (data.password !== data.repeatPassword) {
+      toast.error("Las contraseñas no coinciden");
+      return;
+    }
+
     setIsLoading(true);
     const response = await registerUser(validation.data);
     setIsLoading(false);
@@ -46,7 +56,34 @@ const Register = () => {
         <FormInput label="Apellido" id="lastname" />
         <FormInput label="Número de teléfono" type="tel" id="phone" />
         <FormInput label="Correo electrónico" type="email" id="email" />
-        <FormInput label="Contraseña" type="password" id="password" />
+        <div className="relative">
+          <FormInput
+            label="Contraseña"
+            type={passwordVisible ? "text" : "password"}
+            id="password"
+          />
+          <button
+            type="button"
+            onClick={() => setPasswordVisible(!passwordVisible)}
+            className="absolute right-0 top-0 text-stone-800 hover:text-stone-500 cursor-pointer border border-stone-300 py-2 px-1"
+          >
+            {passwordVisible ? <ClosedEye /> : <OpenEye />}
+          </button>
+        </div>
+        <div className="relative">
+          <FormInput
+            label="Repetir contraseña"
+            type={repeatPasswordVisible ? "text" : "password"}
+            id="repeatPassword"
+          />
+          <button
+            type="button"
+            onClick={() => setRepeatPasswordVisible(!repeatPasswordVisible)}
+            className="absolute right-0 top-0 text-stone-800 hover:text-stone-500 cursor-pointer border border-stone-300 py-2 px-1"
+          >
+            {repeatPasswordVisible ? <ClosedEye /> : <OpenEye />}
+          </button>
+        </div>
         <CustomButton labelText="Registrarse" />
       </form>
       <span>

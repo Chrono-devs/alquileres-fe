@@ -7,9 +7,12 @@ import { CustomButton } from "@/components/ui/CustomButton";
 import { toast } from "sonner";
 import { validateLogin } from "@/utils/FormsValidate";
 import { useAuth } from "@/hooks/useAuth";
+import { ClosedEye } from "@/assets/ClosedEye";
+import { OpenEye } from "@/assets/OpenEye";
 
 const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [passwordVisible, setPasswordVisible] = useState(false);
   const nav = useNavigate();
   const { setUser } = useAuth();
 
@@ -38,7 +41,6 @@ const Login = () => {
     toast.success("Inicio de sesión exitoso.");
     setUser(response.data);
     nav("/dashboard");
-
   };
 
   return (
@@ -46,7 +48,20 @@ const Login = () => {
       <h1 className="text-xl font-bold">Iniciar sesión</h1>
       <form className="flex flex-col gap-4 my-6" onSubmit={handleSubmit}>
         <FormInput label="Correo electrónico" type="email" id="email" />
-        <FormInput label="Contraseña" type="password" id="password" />
+        <div className="relative">
+          <FormInput
+            label="Contraseña"
+            type={passwordVisible ? "text" : "password"}
+            id="password"
+          />
+          <button
+            type="button"
+            onClick={() => setPasswordVisible(!passwordVisible)}
+            className="absolute right-0 top-0 text-stone-800 hover:text-stone-500 cursor-pointer border border-stone-300 py-2 px-1"
+          >
+            {passwordVisible ? <ClosedEye /> : <OpenEye />}
+          </button>
+        </div>
         <CustomButton labelText="Iniciar sesión" />
       </form>
       <span>
