@@ -51,21 +51,22 @@ const Register = () => {
   return (
     <div>
       <h1 className="text-xl font-bold">Crear cuenta</h1>
-      <form className="flex flex-col gap-4 my-6" onSubmit={handleSubmit}>
-        <FormInput label="Nombre" id="name" />
-        <FormInput label="Apellido" id="lastname" />
-        <FormInput label="Número de teléfono" type="tel" id="phone" />
-        <FormInput label="Correo electrónico" type="email" id="email" />
+      <form className="flex flex-col gap-4 my-8" onSubmit={handleSubmit}>
+        <FormInput label="Nombre" id="name" placeholder="Lionel" />
+        <FormInput label="Apellido" id="lastname" placeholder="Messi" />
+        <FormInput label="Teléfono (+54 9)" type="tel" id="phone" placeholder="123 456 7890" />
+        <FormInput label="Correo electrónico" type="email" id="email" placeholder="ejemplo@correo.com" />
         <div className="relative">
           <FormInput
             label="Contraseña"
             type={passwordVisible ? "text" : "password"}
             id="password"
+            placeholder="********"
           />
           <button
             type="button"
             onClick={() => setPasswordVisible(!passwordVisible)}
-            className="absolute right-0 top-0 text-stone-800 hover:text-stone-500 cursor-pointer border border-stone-300 py-2 px-1"
+            className="absolute right-0 top-0 text-stone-600 hover:text-stone-400 cursor-pointer border border-stone-300 py-2 px-1"
           >
             {passwordVisible ? <ClosedEye /> : <OpenEye />}
           </button>
@@ -75,11 +76,12 @@ const Register = () => {
             label="Repetir contraseña"
             type={repeatPasswordVisible ? "text" : "password"}
             id="repeatPassword"
+            placeholder="********"
           />
           <button
             type="button"
             onClick={() => setRepeatPasswordVisible(!repeatPasswordVisible)}
-            className="absolute right-0 top-0 text-stone-800 hover:text-stone-500 cursor-pointer border border-stone-300 py-2 px-1"
+            className="absolute right-0 top-0 text-stone-600 hover:text-stone-400 cursor-pointer border border-stone-300 py-2 px-1"
           >
             {repeatPasswordVisible ? <ClosedEye /> : <OpenEye />}
           </button>

@@ -1,4 +1,4 @@
-export const FormInput = ({ label, type = "text", id}) => {
+export const FormInput = ({ label, type = "text", id, placeholder }) => {
   return (
     <label htmlFor={id} className="flex justify-between items-center">
       {label}
@@ -6,7 +6,7 @@ export const FormInput = ({ label, type = "text", id}) => {
         type={type}
         id={id}
         name={id}
-        placeholder={id === "phone" ? "+54" : label}
+        placeholder={placeholder}
         className="p-2 border-stone-300 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-600 "
         autoComplete="off"
       />

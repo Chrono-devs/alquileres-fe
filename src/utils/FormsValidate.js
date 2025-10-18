@@ -13,7 +13,7 @@ const registerSchema = z.object({
     .string("Es necesario proporcioanr una contraseña valida")
     .regex(
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/,
-      "La contraseña debe contener al menos 8 caracteres.\nIncluyendo mayúsculas, minúsculas y números"
+      "La contraseña debe contener al menos 8 caracteres.Incluyendo mayúsculas, minúsculas y números"
     ),
   email: z
     .string("Es necesario proporcionar un email valido")
@@ -23,8 +23,8 @@ const registerSchema = z.object({
     ),
   phone: z
     .string("Es necesario proporcionar un teléfono válido")
-    .min(10, "El número de teléfono debe contener 10 dígitos")
-    .max(10, "El número de teléfono debe contener 10 dígitos"),
+    .min(10, "El número de teléfono debe contener 10 dígitos ademas del código de área")
+    .max(10, "El número de teléfono debe contener 10 dígitos ademas del código de área"),
 },"Es necesario proporcionar un body válido");
 
 const loginSchema = z.object({
