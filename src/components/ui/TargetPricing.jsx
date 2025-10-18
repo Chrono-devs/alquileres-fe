@@ -8,7 +8,7 @@ const TargetPricing= ({planName, popular, price, description, buttonText, list =
                 <span className="bg-gray-200 text-purple-500 px-5 py-1 text-sm rounded-md">{popular}</span>
             </div>
 
-            <div className="flex items-baseline items-center justify-center space-x-2 mt-5">
+            <div className="flex items-baseline justify-center space-x-2 mt-5">
                 <span className="text-xl font-bold text-black relative -top-4">$</span>
                 <span className="text-3xl font-sans text-black relative -top-2 text-">{price}</span>
                 <span className="text-gray-500 ml-1">/ month</span>
