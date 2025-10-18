@@ -32,8 +32,6 @@ const SearchRent = () => {
                     <div className="filter-row">
                         <span className="filter-section-title">Filtrar por:</span>
                     </div>
-
-                    {/* Precio */}
                     <div className="filter-row mt-2">
                         <h3 className="text-base font-medium">Precio</h3>
                         <button type="button" className="filter-reset" onClick={resetPrices}>Reset</button>
@@ -48,8 +46,6 @@ const SearchRent = () => {
                             <input type="number" value={maxPrice} onChange={(e) => setMaxPrice(e.target.value)} className="border border-gray-400 rounded-xl px-3 py-2" placeholder="100000" />
                         </label>
                     </div>
-
-                    {/* Ubicación */}
                     <div className="filter-row mt-2">
                         <h3 className="text-base font-medium">Ubicación</h3>
                         <button type="button" className="filter-reset" onClick={resetLocation}>Reset</button>
