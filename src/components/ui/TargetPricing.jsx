@@ -14,7 +14,7 @@ const TargetPricing = ({ planName, popular, price, description, buttonText, list
                 <span className="text-gray-500 text-lg ml-1">/ mes</span>
             </section>
             <aside>
-                <p className="text-gray-600 text-md">{description}</p>
+                <p className="text-gray-600 text-md px-6">{description}</p>
             </aside>
             <hr className="text-gray-300 w-full" />
             <ul className="flex flex-col space-y-5  p-6 text-gray-700 text-md w-full text-left">
