@@ -11,6 +11,7 @@ import AdminDashboard from '@pages/admin/Dashboard.jsx';
 import NotFound from '@pages/NotFound.jsx';
 import SearchPage from '@/pages/Search';
 import DuenoDashboard from '@pages/dueno/Dashboard.jsx';
+import Promotion from '@/pages/Promotion';
 
 // Componente que encapsula toda la definición de rutas usando la sintaxis declarativa
 const AppRoutes = () => {
@@ -21,6 +22,7 @@ const AppRoutes = () => {
         <Route element={<MainLayout />}> 
           <Route path='/' element={<Home />} />
           <Route path='/propriedades' element={<SearchPage />} />
+          <Route path='/publicar' element={<Promotion />} />
         </Route>
 
         {/* Rutas de autenticación */}
