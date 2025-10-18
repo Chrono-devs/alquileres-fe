@@ -13,7 +13,7 @@
       "@sections/*": ["components/sections/*"],
       "@hooks/*": ["hooks/*"],
       "@lib/*": ["lib/*"],
-      "@services/*": ["services/*"],
+      "@api/*": ["api/*"],
       "@store/*": ["store/*"],
       "@styles/*": ["styles/*"],
       "@assets/*": ["assets/*"],

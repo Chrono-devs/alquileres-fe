@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+// Layouts
 import MainLayout from '@layouts/MainLayout.jsx';
 import AuthLayout from '@layouts/AuthLayout.jsx';
 import AdminLayout from '@layouts/AdminLayout.jsx';
@@ -13,7 +14,8 @@ import SearchPage from '@/pages/Search';
 import DuenoDashboard from '@pages/dueno/Dashboard.jsx';
 import Promotion from '@/pages/Promotion';
 
-// Componente que encapsula toda la definición de rutas usando la sintaxis declarativa
+// App Routes Component
+
 const AppRoutes = () => {
   return (
     <BrowserRouter>

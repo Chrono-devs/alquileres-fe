@@ -1,13 +1,15 @@
-import { FormInput } from "@/components/ui/FormInput";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { validateRegister } from "@/utils/FormsValidate";
-import { registerUser } from "@/api/authentication";
-import loader from "../../assets/loader.svg";
-import { CustomButton } from "@/components/ui/CustomButton";
+
+import { FormInput } from "@ui/FormInput";
+import { validateRegister } from "@utils/FormsValidate";
+import { registerUser } from "@api/authentication";
+import { CustomButton } from "@ui/CustomButton";
 import { toast } from "sonner";
-import { ClosedEye } from "@/assets/ClosedEye";
-import { OpenEye } from "@/assets/OpenEye";
+import { ClosedEye } from "@assets/ClosedEye";
+import { OpenEye } from "@assets/OpenEye";
+import loader from "@assets/loader.svg";
+
 
 const Register = () => {
   const [isLoading, setIsLoading] = useState(false);

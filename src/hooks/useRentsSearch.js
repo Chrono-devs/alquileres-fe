@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useReducer } from 'react';
-import { getRents } from '@/services/rentsService';
+import { getRents } from '@/api/rentsService';
 import { NO_RESPONSE_MESSAGE } from '@/utils/errorHandler';
 
 const initialState = (initialParams) => ({

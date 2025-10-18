@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useReducer } from 'react';
-import { getAllRents, getAllRentsDestacados } from '@/services/rentsService';
+import { getAllRents, getAllRentsDestacados } from '@/api/rentsService';
 import { NO_RESPONSE_MESSAGE } from '@/utils/errorHandler';
 
 const initialState = {
