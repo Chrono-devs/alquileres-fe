@@ -1,8 +1,8 @@
-export const CustomButton = ({ labelText, type = "submit" }) => {
+export const CustomButton = ({ labelText, type = "submit", className }) => {
   return (
     <button
       type={type}
-      className="bg-purple-600 hover:bg-purple-700 transition-colors font-semibold text-white py-3 rounded-md text-md tracking-wider shadow-md cursor-pointer"
+      className={`bg-purple-600 hover:bg-purple-700 transition-colors font-semibold text-white py-3 rounded-md text-md tracking-wider shadow-md cursor-pointer ${className}`}
     >
       {labelText}
     </button>
